@@ -1,0 +1,24 @@
+sudo apt-get -y update && sudo apt -y ugrade && sudo apt-get -y dist-upgrade
+sudo apt-get autoremove
+sudo apt-get -y install \
+mc curl vim nano zsh tilda vlc kazam git scrot xclip screen chromium \
+p7zip-full unrar-free gimp imagemagick ffmpeg audacious pdftk putty \
+synaptic gdebi apt-xapian-index firmware-linux firmware-linux-nonfree \
+build-essential cmake gparted dconf-editor galternatives htop lshw locate \
+inetutils-tools netcat nmap zenmap tcpdump wireshark tshark iperf wavemon
+snapd 
+
+network-manager-openvpn-gnome wget unzip 
+
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i ./google-chrome-stable_current_amd64.deb
+wget https://go.skype.com/skypeforlinux-64.deb
+sudo dpkg -i ./skypeforlinux-64.deb
+wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | apt-key add -
+sudo add-apt-repository "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
+sudo apt install virtualbox-6.0
+
+sudo apt-get -y update
+
+sudo usermod -a -G wireshark $USER
