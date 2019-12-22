@@ -4,7 +4,8 @@ sudo apt-get -y install \
 git mc curl vim nano zsh tilda screen p7zip-full unrar-free snapd chromium \
 gimp imagemagick ffmpeg audacious pdftk putty vlc kazam scrot xclip locate \
 synaptic gdebi apt-xapian-index firmware-linux firmware-linux-nonfree lshw \
-build-essential cmake gparted dconf-editor software-properties-common htop \
+build-essential cmake gparted dconf-editor htop \
+software-properties-common apt-transport-https ca-certificates \
 inetutils-tools dnsutils netcat nmap zenmap tcpdump wavemon iperf tshark \
 android-tools-adb android-tools-fastboot galternatives \
 network-manager-openvpn-gnome 
@@ -23,4 +24,19 @@ sudo apt install virtualbox-6.0
 
 sudo usermod -a -G wireshark $USER
 
-# Установка openjdk-11-* jdk-8
+# Установка jdk-8 openjdk-11-*
+java -version
+https://download.oracle.com/otn/java/jdk/8u231-b11/5b13a193868b4bf28bcb45c792fce896/jdk-8u231-linux-x64.tar.gz
+?AuthParam=1577002004_da67aa0cffc118a5b68148efc4e5d616
+VER=231
+sudo mkdir -p /usr/lib/jvm
+sudo tar -zxvf ~/Downloads/jdk-8u$VER-linux-x64.tar.gz -C /usr/lib/jvm/
+
+# /etc/profile/java.sh
+export PATH=$PATH:/usr/lib/jvm/jdk1.8.0_221/bin
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_221/
+export J2SDKDIR=/usr/lib/jvm/jdk1.8.0_221/
+export JRE_HOME=/usr/lib/jvm/jdk1.8.0_221/jre/
+export J2REDIR=/usr/lib/jvm/jdk1.8.0_221/jre/
+sudo update-alternatives --install /usr/bin/javaws javaws /usr/lib/jvm/*имя папки*/bin/javaws 1
+sudo update-alternatives --config java
