@@ -1,13 +1,14 @@
 sudo apt-get -y update && sudo apt -y ugrade && sudo apt-get -y dist-upgrade
 sudo apt-get autoremove
 sudo apt-get -y install \
-mc curl vim nano zsh tilda vlc kazam scrot xclip screen chromium snapd \
-p7zip-full unrar-free gimp imagemagick ffmpeg audacious pdftk putty iperf \
-git synaptic gdebi apt-xapian-index firmware-linux firmware-linux-nonfree \
-build-essential cmake gparted dconf-editor galternatives htop lshw locate \
-inetutils-tools dnsutils netcat nmap zenmap tcpdump tshark wavemon \
-network-manager-openvpn-gnome android-tools-adb android-tools-fastboot
-wireshark #подверждать ОК >> ДА/НЕТ
+git mc curl vim nano zsh tilda screen p7zip-full unrar-free snapd chromium \
+gimp imagemagick ffmpeg audacious pdftk putty vlc kazam scrot xclip locate \
+synaptic gdebi apt-xapian-index firmware-linux firmware-linux-nonfree lshw \
+build-essential cmake gparted dconf-editor software-properties-common htop \
+inetutils-tools dnsutils netcat nmap zenmap tcpdump wavemon iperf tshark \
+android-tools-adb android-tools-fastboot galternatives \
+network-manager-openvpn-gnome 
+wireshark # ? подверждать ОК >> ДА/НЕТ
 
 wget -P /tmp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 wget -P /tmp https://go.skype.com/skypeforlinux-64.deb
