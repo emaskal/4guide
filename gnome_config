@@ -1,0 +1,15 @@
+# включаем огонек Scroll-Lock при русской раскладке, отключаем Caps Lock
+# и добавляем сочетание Ctrl Alt Backspace для прерывания работы X-сервера
+gsettings set org.gnome.desktop.input-sources xkb-options "['terminate:ctrl_alt_bksp', 'caps:none', 'grp_led:scroll']"
+# После назначаем Caps Lock как переключения раскладки-языка клавиатуры
+gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['VoidSymbol']"
+
+# Создаем/редактируем ~/.config/gtk-3.0/gtk.css
+.header-bar.default-decoration {
+padding-top: 0px;
+padding-bottom: 0px;
+}
+.header-bar.default-decoration .button.titlebutton {
+padding-top: 0px;
+padding-bottom: 0px;
+}
