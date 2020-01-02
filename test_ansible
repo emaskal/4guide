@@ -1,24 +1,24 @@
-sudo apt-get -y update && sudo apt -y ugrade && sudo apt-get -y dist-upgrade
-sudo apt-get autoremove
+sudo apt-get -y update && sudo apt -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get autoremove
 sudo apt-get -y install \
-git mc curl vim nano zsh tilda screen p7zip-full unrar-free snapd chromium \
-gimp imagemagick ffmpeg audacious pdftk putty vlc kazam scrot xclip locate \
-synaptic gdebi apt-xapian-index firmware-linux firmware-linux-nonfree dkms \
-build-essential cmake make android-tools-adb android-tools-fastboot htop lshw \
-gcc software-properties-common apt-transport-https ca-certificates gparted \
-net-tools dnsutils netcat nmap zenmap tcpdump wavemon iperf tshark \ 
-dconf-editor htop galternatives vagrant docker.io lshw \
-network-manager-openvpn-gnome wireshark
+git mc curl vim nano zsh tilda screen p7zip-full unrar-free snapd putty \ 
+lshw htop synaptic gdebi apt-xapian-index dkms gparted dconf-editor vlc \
+imagemagick gimp ffmpeg audacious vlc kazam scrot xclip locate dnsutils \
+build-essential cmake make gcc android-tools-adb android-tools-fastboot \
+software-properties-common apt-transport-https ca-certificates net-tools \
+netcat nmap zenmap tcpdump wavemon iperf tshark wireshark galternatives \
+vagrant docker.io network-manager-openvpn-gnome \
+## не найден кандидат для Ubuntu 18.04
+pdftk firmware-linux firmware-linux-nonfree
 
 ??wireshark # ? подверждать ОК >> ДА/НЕТ
 sudo usermod -a -G wireshark $USER 
 sudo usermod -a -G docker $USER
 
+#dpkg -l <app>
 wget -P /tmp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 wget -P /tmp https://go.skype.com/skypeforlinux-64.deb
 sudo dpkg -i /tmp/google-chrome-stable_current_amd64.deb
 sudo dpkg -i /tmp/skypeforlinux-64.deb
-
 curl https://rclone.org/install.sh | sudo bash
 
 wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
@@ -26,6 +26,20 @@ wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | apt-key add -
 sudo add-apt-repository "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
 sudo apt-get -y update
 sudo apt install virtualbox-6.0
++++++++++++++++++++++++++++++++
+# $apt -y install gcc make linux-headers-$LINUX_HEADERS dkms
+LINUX_HEADERS=$(uname -r)
+sudo sh -c "echo '# add to main sources.list' >> /etc/apt/sources.list"
+sudo sh -c "echo 'deb https://download.virtualbox.org/virtualbox/debian buster contrib' >> /etc/apt/sources.list"
+wget https://www.virtualbox.org/download/oracle_vbox_2016.asc
+sudo apt-key add oracle_vbox_2016.asc
+# VBEVER=6.1.0
+sudo apt -y update && sudo apt -y install virtualbox-6.1
+wget http://download.virtualbox.org/virtualbox/$VBEVER/Oracle_VM_VirtualBox_Extension_Pack-$VBEVER.vbox-extpack
+VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-$VBEVER.vbox-extpack
+# VBoxManage list extpacks
+wget -P /tmp https://releases.hashicorp.com/vagrant/2.2.6/vagrant_2.2.6_x86_64.deb
+sudo dpkg -i /tmp/vagrant_2.2.6_x86_64.deb
 
 # Установка jdk-8 openjdk-11-*   $java -version $sudo mkdir -p /usr/lib/jvm
 https://download.oracle.com/otn/java/jdk/8u231-b11/5b13a193868b4bf28bcb45c792fce896/jdk-8u231-linux-x64.tar.gz
@@ -41,18 +55,6 @@ export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_231/
 export J2SDKDIR=/usr/lib/jvm/jdk1.8.0_231
 export JRE_HOME=/usr/lib/jvm/jdk1.8.0_231/jre/
 export J2REDIR=/usr/lib/jvm/jdk1.8.0_231/jre/
-
-# $apt -y install gcc make linux-headers-$LINUX_HEADERS dkms
-LINUX_HEADERS=$(uname -r)
-sudo sh -c "echo '# add to main sources.list' >> /etc/apt/sources.list"
-sudo sh -c "echo 'deb https://download.virtualbox.org/virtualbox/debian buster contrib' >> /etc/apt/sources.list"
-wget https://www.virtualbox.org/download/oracle_vbox_2016.asc
-sudo apt-key add oracle_vbox_2016.asc
-# VBEVER=6.1.0
-sudo apt -y update && sudo apt -y install virtualbox-6.1
-wget http://download.virtualbox.org/virtualbox/$VBEVER/Oracle_VM_VirtualBox_Extension_Pack-$VBEVER.vbox-extpack
-VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-$VBEVER.vbox-extpack
-# VBoxManage list extpacks
 
 # install gradle
 curl -s "https://get.sdkman.io" | bash
