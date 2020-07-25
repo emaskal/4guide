@@ -1,0 +1,6 @@
+sudo pacman -S
+firefox gimp libreoffice-still telegram-desktop vlc cairo-dock \
+jdk8-openjdk jdk11-openjdk \
+snapd 
+
+sudo systemctl enable --now snapd.socket
